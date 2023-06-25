@@ -1,0 +1,96 @@
+{% extends 'todos/base/base.html' %}
+{% load static %}
+{% block title %}To-do App with Login{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="todo-app">
+        <div class="row">
+            <div class="offset-md-2 col-lg-9">
+                <div class="page-header">
+                    <h1>
+                        My To-do List
+                    </h1>
+                </div>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="offset-md-2 col-lg-9">
+                    <form method="post" action="{% url 'todos:add_activity'%}">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-md-9 mb-2">
+                                <input type="text" class="form-control" name="title" placeholder="Eg.: Do laundry" required>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" name="submit" class="btn btn-primary">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr />
+
+        
+            <!-- todo list row -->
+            <div class="row">
+                <div class="container">
+                    {% if todo_list %}
+                    <div class="list-group">
+                        {% for todo in todo_list %}
+                        <div class="list-group-item {% if todo.isCompleted %} todo-complete {% endif %}">
+                            <form class="todo-list" method="post" action="{% url 'todos:update_activity' todo.id %}">
+                                {% csrf_token %}
+                                <input type="checkbox" name="isCompleted" 
+                                onchange="this.form.submit()" {% if todo.isCompleted %} checked {% endif %}
+                                class="todo-status-checkbox"
+                                title="{% if not todo.isCompleted %} Mark as done {% else %} Mark undone {% endif %}">
+                            </form>
+                            {{ todo.title }}
+                            <a href="{% url 'todos:delete_activity' todo.id %}" title="Delete">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="arrow bounce"></div>
+                    <div style="padding-top: 10px;">
+                        <div class="alert alert-primary" role="alert">
+                            Add your first to-do activity
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% else %}
+        <div class="row">
+            <div class="container">
+                <div class="alert alert-info" role="alert">
+                    Please login in or sign up first to access your to-do app
+                </div>
+                <div class="login-btn-todoapp">
+                    <a href="{% url 'api_auth:login' %}" class="btn btn-primary">Login</a> 
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="container">
+                <div class="create-account-todo">
+                    <a href="{% url 'api_auth:register' %}">Create an Account</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- Add a todo row -->
+        
+    </div>
+
+</div>
+{% endblock %}

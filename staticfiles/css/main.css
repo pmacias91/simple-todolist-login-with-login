@@ -1,0 +1,189 @@
+
+body{
+  background-color: #f3f3f3;
+  color: #122543;
+  font-family: open sans,sans-serif;
+  background-attachment: fixed;
+  
+}
+
+nav {
+  background-color: #0b1629;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
+
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link.show {
+  color: #e2ff65;
+  font-weight: bold;
+}
+
+.container{
+  width: min(100% - 30px, 840px);
+  margin-inline: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hello-msg{
+  font-size: 18px;
+  color: white;
+  margin-right: 20px;
+}
+
+.todo-app{
+  margin-top: 10%;
+  background-color: #ffffff;
+  padding: 10px 20px 20px;
+  box-shadow: 1px 1px 20px -4px #888888;
+  border-radius: 1%;
+}
+
+.todo-list{
+  display: inline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.page-header {
+  margin-top: 30px;
+}
+  
+.fa-trash-alt {
+  color: red;
+  float: right;
+  cursor: pointer;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.todo-status-checkbox {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* arrow for when there's no activities */
+.arrow{
+  position: initial;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/arrow.png);
+  background-size: cover;
+  
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.btn-primary{
+  color: #fff;
+  background-color: #122543;
+  border-color: #122543;
+}
+
+.btn-primary:hover{
+  background-color: #bcd357;
+  border-color: #bcd357;
+  color: #122543;
+}
+
+.btn-primary:active{
+  background-color: #bcd357;
+  border-color: #bcd357;
+  color: #122543;
+}
+
+.btn-primary:focus{
+  background-color: #bcd357;
+  border-color: #bcd357;
+  color: #122543;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active, 
+.show>.btn-primary.dropdown-toggle{
+  background-color: #bcd357;
+  border-color: #bcd357;
+  color: #122543;
+}
+
+.login-btn-todoapp a{
+  display: block;
+}
+
+.create-account-todo{
+  text-align: center;
+}
+
+.create-account-todo a{
+  text-decoration: none;
+  color: #122543;
+}
+
+.create-account-todo a:hover{
+  color: #8cc4df;
+}
+
+.login-btn{
+  color: #e2ff65;
+  background-color: #0b1629;
+  border-color: #e2ff65;
+}
+
+.login-btn:hover{
+  background-color: #bcd357;
+  border-color: #bcd357 ;
+}
+
+.login-btn:focus{
+  background-color: #bcd357;
+  border-color: #bcd357 ;
+}
+
+
+
+.apps-container{
+  padding: 30px 15px;
+}
+
+@media only screen and (max-device-width: 768px){
+  .apps-container{
+    padding: 20px 0;
+  }
+}
+.app-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 20rem;
+
+}
+
